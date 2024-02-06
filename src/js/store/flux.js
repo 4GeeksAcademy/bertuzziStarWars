@@ -20,7 +20,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favoriteCount: 0,
 			peopleSearch: [],
 			planetSearch: [],
-			vehicleSearch: []
+			vehicleSearch: [],
+			relatedCharacters: [],
+			relatedPlanets: [],
+			relatedVehicles: []
 		},
 		actions: {
 
@@ -146,6 +149,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log('infoDetail ', results);
 				setStore({ film: results });
 				setStore({ filmInfo: results.properties });
+			},
+
+			getRelatedCharacters: async (url) => {
+				const response = await fetch(url);
+				if (!response.ok) {
+					console.log(response.status, response.statusText);
+					return response.statusText;
+				}
+				const data = await response.json();
+				const results = data.result;
+				setStore({ relatedCharacters: results });
+				console.log(results);
 			},
 
 			setFavoriteChar: (newFav) => {
