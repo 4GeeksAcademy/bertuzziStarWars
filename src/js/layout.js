@@ -11,7 +11,9 @@ import PlanetDetails from './views/PlanetDetails.jsx';
 import VehicleDetails from './views/VehicleDetails.jsx';
 import Characters from './views/Characters.jsx';
 import Planets from './views/Planets.jsx';
-import Vehicles from './views/Vehicles.jsx'
+import Vehicles from './views/Vehicles.jsx';
+import Films from "./views/Films.jsx";
+import FilmDetails from "./views/FilmDetails.jsx";
 
 //create your first component
 const Layout = () => {
@@ -28,6 +30,8 @@ const Layout = () => {
 					<Route path='/characters' element={<Characters />} />
 					<Route path='/planets' element={<Planets />} />
 					<Route path='/vehicles' element={<Vehicles />} />
+					<Route path='/films' element={<Films />} />
+					<Route path='/films/:id' element={<FilmDetails />} />
 					<Route path='/character/:id' element={<CharacterDetails />} />
 					<Route path='/planet/:id' element={<PlanetDetails />} />
 					<Route path='/vehicle/:id' element={<VehicleDetails />} />

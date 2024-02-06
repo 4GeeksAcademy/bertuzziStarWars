@@ -18,6 +18,7 @@ function NavbarMenu() {
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="me-auto">
+						<Nav.Link onClick={() => navigate('/films')}>Films</Nav.Link>
 						<NavDropdown title="Categories" id="basic-nav-dropdown">
 							<NavDropdown.Item onClick={() => navigate('/characters')}>Charachters</NavDropdown.Item>
 							<NavDropdown.Item onClick={() => navigate('/planets')}>Planets</NavDropdown.Item>
