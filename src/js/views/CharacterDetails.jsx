@@ -24,7 +24,7 @@ const CharacterDetails = () => {
   return (
     <div className='container'>
       <div className='row'>
-        <div className='col-md-5 details justify-content-center'>
+        <div className='col-md-5 details d-flex justify-content-center'>
           <img src={'https://starwars-visualguide.com/assets/img/characters/' + id + '.jpg'} className="detailImg img-fluid" alt="Responsive image" onError={errorImg} />
         </div>
         <div className='col-md-7 details'>
