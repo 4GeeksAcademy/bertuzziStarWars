@@ -2,12 +2,11 @@ import React, { useContext } from "react";
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import PaginationComponent from '../component/Pagination.jsx';
-import SearchBar from "../component/SearchBar.jsx";
+import PaginationPlanets from '../component/PaginationPlanets.jsx';
 
-const Characters = () => {
+const Films = () => {
     const { store, actions } = useContext(Context);
-    const charachters = store.charachters;
+    const films = store.films;
     const placeholderImg = 'https://starwars-visualguide.com/assets/img/placeholder.jpg';
 
     function errorImg(e) {
@@ -28,38 +27,34 @@ const Characters = () => {
         const newFav = [...currentFav, id];
         const favCount = store.favoriteCount;
         const newCount = favCount + 1;
-        actions.setFavoriteChar(newFav);
+        actions.setFavoriteFilms(newFav);
         actions.setCount(newCount);
-        console.log('fav characters: ', newFav)
+        console.log('fav films: ', newFav)
     };
-
 
     return (
         <div className="container-fluid ">
             <div className='d-flex flex-column align-items-center my-5'>
-                <h1 className="text-center my-3">Characters</h1>
-                <SearchBar />
+                <h1 className="text-center my-3">Films</h1>
             </div>
             <div className="row characters d-flex justify-content-center mt-5">
-                {charachters.map((char) => {
+                {films.map((film) => {
                     return (
                         <div className="card m-4" style={{ width: '20rem' }}>
-                            <img className="card-img-top" src={'https://starwars-visualguide.com/assets/img/characters/' + char.uid + '.jpg'} alt="Card image cap" onError={errorImg} />
+                            <img className="card-img-top" src={'https://starwars-visualguide.com/assets/img/films/' + film.uid + '.jpg'} alt="Card image cap" onError={errorImg} />
                             <div className="card-body">
-                                <h5 className="card-title">{char.name}</h5>
+                                <h5 className="card-title">{film.properties.title}</h5>
                                 <div className="d-flex justify-content-between">
-                                    <Link className='btn btn-primary cardbutton' to={'/character/' + char.uid}>Details</Link>
-                                    <h4><i className="fa-regular fa-heart" id={char.name} onClick={addFavorite}></i></h4>
+                                    <Link className='btn btn-primary cardbutton' to={'/films/' + film.uid}>Details</Link>
+                                    <h4><i className="fa-regular fa-heart" id={film.uid} onClick={addFavorite}></i></h4>
                                 </div>
                             </div>
                         </div>
                     )
                 })}
             </div>
-            <PaginationComponent />
         </div >
-    );
+    )
+}
 
-};
-
-export default Characters;
+export default Films

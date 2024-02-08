@@ -9,6 +9,7 @@ function FavoriteButton() {
     const favoriteCharacters = store.favoriteCharacters;
     const favoritePlanets = store.favoritePlanets;
     const favoriteVehicles = store.favoriteVehicles;
+    const favoriteFilms = store.favoriteFilms;
     const favCount = store.favoriteCount;
 
     function removeFav(e) {
@@ -37,6 +38,15 @@ function FavoriteButton() {
             const deletedEl = favoriteVehicles.splice(index, 1);
             console.log(favoriteVehicles);
             actions.removeFavoriteVehicle(favoriteVehicles);
+            const favCount = store.favoriteCount;
+            const newCount = favCount - 1;
+            actions.setCount(newCount);
+        }
+        if (favoriteFilms.includes(el)) {
+            const index = favoriteFilms.indexOf(el);
+            const deletedEl = favoriteFilms.splice(index, 1);
+            console.log(favoriteFilms);
+            actions.removeFavoriteFilms(favoriteFilms);
             const favCount = store.favoriteCount;
             const newCount = favCount - 1;
             actions.setCount(newCount);
@@ -73,6 +83,14 @@ function FavoriteButton() {
                         <div className='d-flex justify-content-between'>
                             <Dropdown.Item href="#">{vehicle}</Dropdown.Item>
                             <i className="fa-regular fa-trash-can mx-2" id={vehicle} onClick={removeFav}></i>
+                        </div>
+                    )
+                })}
+                {favoriteFilms.map((film) => {
+                    return (
+                        <div className='d-flex justify-content-between'>
+                            <Dropdown.Item href="#">{film}</Dropdown.Item>
+                            <i className="fa-regular fa-trash-can mx-2" id={film} onClick={removeFav}></i>
                         </div>
                     )
                 })}
